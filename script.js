@@ -1,37 +1,42 @@
-document.getElementById("preview").addEventListener("click", () => {
+document.getElementById("gerar").addEventListener("click", () => {
   const nome1 = document.getElementById("nome1").value.trim();
   const nome2 = document.getElementById("nome2").value.trim();
   const mensagem = document.getElementById("mensagem").value.trim();
-  const foto = document.getElementById("fotoCasal").files[0];
-  const previewContainer = document.getElementById("previewContainer");
-
-  previewContainer.innerHTML = ""; 
+  const fotoInput = document.getElementById("fotoCasal");
 
   if (!nome1 || !nome2 || !mensagem) {
-    alert("Por favor, preencha todos os campos antes de ver a prévia 💞");
+    alert("Preencha tudo, meu cupido 💘");
     return;
   }
 
+  const dados = { nome1, nome2, mensagem };
 
-  const card = document.createElement("div");
-  card.className = "preview-card";
-
-  const title = document.createElement("h2");
-  title.textContent = `${nome1} 💖 ${nome2}`;
-
-  const message = document.createElement("p");
-  message.textContent = mensagem;
-
-  card.appendChild(title);
-  card.appendChild(message);
-
-  if (foto) {
-    const img = document.createElement("img");
-    img.src = URL.createObjectURL(foto);
-    img.alt = "Foto do casal";
-    img.className = "preview-img";
-    card.appendChild(img);
+  if (fotoInput.files && fotoInput.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      dados.foto = e.target.result;
+      salvarEGerar(dados);
+    };
+    reader.readAsDataURL(fotoInput.files[0]);
+  } else {
+    salvarEGerar(dados);
   }
-
-  previewContainer.appendChild(card);
 });
+
+function salvarEGerar(dados) {
+  const id = Date.now();
+  localStorage.setItem(`historia-${id}`, JSON.stringify(dados));
+
+  const baseUrl = window.location.origin + window.location.pathname.replace("index.html", "");
+  const url = `${baseUrl}historia.html?id=${id}`;
+
+  const qrContainer = document.getElementById("qrcode");
+  qrContainer.innerHTML = "";
+  new QRCode(qrContainer, {
+    text: url,
+    width: 180,
+    height: 180
+  });
+
+  alert("QR Code criado! Escaneie para ver sua história 💞");
+}
