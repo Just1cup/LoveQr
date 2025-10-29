@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Great+Vibes&display=swap');
+
+:root {
+  --rosa-claro: #ffe4ec;
+  --rosa-vivo: #ff7aa2;
+  --rosa-botao: #ff5c8d;
+  --branco: #fff;
+  --texto: #4a2b3c;
+  --sombra: rgba(0, 0, 0, 0.08);
+}
+
+body {
+  background: linear-gradient(135deg, var(--rosa-claro), #fff5f8);
+  font-family: 'Poppins', sans-serif;
+  color: var(--texto);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  margin: 0;
+  padding: 40px 20px;
+}
+
+h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3em;
+  color: var(--rosa-botao);
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 4px rgba(255, 122, 162, 0.3);
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-top: 12px;
+  text-align: center;
+  color: var(--texto);
+}
+
+input[type="text"],
+textarea,
+input[type="file"] {
+  width: 300px;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 12px;
+  background: var(--branco);
+  box-shadow: 0 2px 6px var(--sombra);
+  margin-top: 6px;
+  font-size: 1em;
+  transition: all 0.25s ease;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  box-shadow: 0 0 0 3px var(--rosa-vivo);
+  outline: none;
+}
+
+textarea {
+  height: 100px;
+  resize: none;
+}
+
+button {
+  background-color: var(--rosa-botao);
+  color: var(--branco);
+  border: none;
+  padding: 12px 25px;
+  border-radius: 14px;
+  font-size: 1em;
+  font-weight: 600;
+  margin: 12px 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(255, 92, 141, 0.3);
+  transition: all 0.25s ease;
+}
+
+button:hover {
+  background-color: var(--rosa-vivo);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(255, 122, 162, 0.4);
+}
+
+#previewContainer {
+  margin-top: 30px;
+  background: var(--branco);
+  border-radius: 18px;
+  padding: 20px;
+  width: 330px;
+  text-align: center;
+  box-shadow: 0 4px 12px var(--sombra);
+  transition: transform 0.2s;
+}
+
+#previewContainer:hover {
+  transform: scale(1.02);
+}
+
+#previewContainer h3 {
+  color: var(--rosa-botao);
+  margin-bottom: 8px;
+}
+
+#previewContainer p {
+  font-size: 0.95em;
+  color: var(--texto);
+}
+
+#previewContainer img {
+  max-width: 100%;
+  border-radius: 12px;
+  margin-top: 10px;
+  box-shadow: 0 3px 8px var(--sombra);
+}
+
+#qrcode {
+  margin-top: 35px;
+  background: var(--branco);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 4px 12px var(--sombra);
+}

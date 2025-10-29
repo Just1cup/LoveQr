@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gerador Romântico 💘</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>💞 Gerador de QR Romântico 💞</h1>
+
+  <label>Nome 1: <input type="text" id="nome1"></label>
+  <label>Nome 2: <input type="text" id="nome2"></label>
+  <label>Mensagem: <textarea id="mensagem" placeholder="Escreva algo fofo..."></textarea></label>
+  
+  <label>Foto do casal: <input type="file" id="fotoCasal" accept="image/*"></label>
+
+  <button id="preview">Ver Prévia 💞</button>
+
+  <div id="previewContainer"></div>
+
+  <button id="gerar">Gerar QR Code 💘</button>
+
+  <div id="qrcode"></div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
