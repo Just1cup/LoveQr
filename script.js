@@ -3,30 +3,51 @@ console.log("🚀 script.js carregado");
 document.addEventListener("DOMContentLoaded", () => {
   console.log("✅ DOM pronto");
 
-  const btn = document.getElementById("gerar");
   const nome1 = document.getElementById("nome1");
   const nome2 = document.getElementById("nome2");
   const msg = document.getElementById("mensagem");
   const foto = document.getElementById("fotoCasal");
-  const preview = document.getElementById("preview");
+  const btnPreview = document.getElementById("preview");
+  const btnGerar = document.getElementById("gerar");
   const qrcodeDiv = document.getElementById("qrcode");
 
-  if (!btn) return console.error("❌ Botão não encontrado.");
+  const previewImg = document.getElementById("previewImg");
+  const previewText = document.getElementById("previewText");
+  const previewNomes = document.getElementById("previewNomes");
+  const previewMensagem = document.getElementById("previewMensagem");
 
+  // 📸 Exibir preview da foto imediatamente
   foto.addEventListener("change", e => {
     const file = e.target.files[0];
     if (!file) return;
     const reader = new FileReader();
     reader.onload = ev => {
-      preview.src = ev.target.result;
-      preview.style.display = "block";
-      console.log("📸 Preview carregado");
+      previewImg.src = ev.target.result;
+      previewImg.style.display = "block";
+      console.log("📸 Foto carregada no preview");
     };
     reader.readAsDataURL(file);
   });
 
-  btn.addEventListener("click", () => {
-    console.log("💞 Botão clicado");
+  // 💞 Ver Prévia — mostra imagem + texto
+  btnPreview.addEventListener("click", () => {
+    if (!nome1.value || !nome2.value || !msg.value) {
+      alert("Preencha todos os campos para ver a prévia 💕");
+      return;
+    }
+
+    previewNomes.textContent = `${nome1.value} 💕 ${nome2.value}`;
+    previewMensagem.textContent = msg.value;
+
+    previewText.style.display = "block";
+    previewImg.style.display = previewImg.src ? "block" : "none";
+
+    console.log("✨ Prévia exibida com sucesso!");
+  });
+
+  // 💘 Gerar QR Code
+  btnGerar.addEventListener("click", () => {
+    console.log("💞 Botão GERAR clicado");
 
     if (!nome1.value || !nome2.value || !msg.value) {
       alert("Preencha todos os campos!");
@@ -38,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
       nome1: nome1.value,
       nome2: nome2.value,
       mensagem: msg.value,
-      foto: preview.src || null
+      foto: previewImg.src || null
     };
     localStorage.setItem(`historia-${id}`, JSON.stringify(dados));
 
