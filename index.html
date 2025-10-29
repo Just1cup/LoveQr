@@ -10,29 +10,30 @@
 
 <body>
 
-  <h1>💞 Gerador de QR Romântico 💞</h1>
+  <div class="card">
 
-  <label>Nome 1: <input type="text" id="nome1"></label>
-  <label>Nome 2: <input type="text" id="nome2"></label>
-  <label>Mensagem: <textarea id="mensagem" placeholder="Escreva algo fofo..."></textarea></label>
+    <h1>💞 Gerador de QR Romântico 💞</h1>
 
-  <label>Foto do casal: <input type="file" id="fotoCasal" accept="image/*"></label>
+    <label>Nome 1: <input type="text" id="nome1"></label>
+    <label>Nome 2: <input type="text" id="nome2"></label>
+    <label>Mensagem: <textarea id="mensagem" placeholder="Escreva algo fofo..."></textarea></label>
 
-  <button id="preview">Ver Prévia 💞</button>
+    <label>Foto do casal: <input type="file" id="fotoCasal" accept="image/*"></label>
 
- <div id="previewContainer">
-  <img id="previewImg" alt="Prévia do casal" style="display:none;">
-  <div id="previewText" style="display:none;">
-    <h2 id="previewNomes"></h2>
-    <p id="previewMensagem"></p>
+    <button id="preview">Ver Prévia 💞</button>
+
+    <div id="previewContainer">
+      <img id="previewImg" alt="Prévia do casal" style="display:none;">
+      <div id="previewText" style="display:none;">
+        <h2 id="previewNomes"></h2>
+        <p id="previewMensagem"></p>
+      </div>
+    </div>
+
+    <button id="gerar">Gerar QR Code 💘</button>
+
+    <div id="qrcode"></div>
   </div>
-</div>
-
-
-  <button id="gerar">Gerar QR Code 💘</button>
-
-  <div id="qrcode"></div>
-
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script src="script.js"></script>
